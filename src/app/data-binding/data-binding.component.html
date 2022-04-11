@@ -1,0 +1,97 @@
+<p>data-binding works!</p>
+{{text}}
+<div style="text-align:center">
+    <p>Databinding concepts</p>
+</div>  
+<h3>{{value}}</h3>
+{{greetUser()}} 
+{{"@"+no}}
+<br>
+
+{{name.toUpperCase()}}
+<input [id]="myId" type="text" value="Hey Sri"><br>
+<!--purpose of proprety binding-->
+<input [disabled]="true" type="text" value="Hey Sri">
+<button type="button" [disabled]="ischanged">Disabled Button</button>
+<p [ngClass]="classes">[ngClass] binding to the classes property making this blue</p>
+
+<p><img alt="Interpolated item" src="{{itemImageUrl}}"> is the <i>interpolated</i> image.</p>
+<p><img alt="Property Bound item" [src]="itemImageUrl"> is the <i>property bound</i> image.</p>
+
+<p><span>"{{interpolationTitle}}" is the <i>interpolated</i> title.</span></p>
+<p>"<span [innerHTML]="propertyTitle"></span>" is the <i>property bound</i> title.</p>
+<p [style.text-decoration]="linkStyle">Login</p>
+<!--Event Binding-->
+<input type="text" value="">
+<button (mouseenter)="clicked()">Button is clicked</button><br>
+<!--Two way Db --> 
+<input type = "text" [(ngModel)]="twoway" >
+{{twoway}}
+
+<input ngModel #user>
+<button (click)="onSubmit(user)">Click me</button>
+
+<!--Structural directives-->
+<div *ngIf="showMsg" [ngStyle]='{color:"red"}'>Hi this is..</div>
+
+<!--if else-->
+<div *ngIf="displayMsg; else returnMsg">Hi this is..</div>
+<ng-template #returnMsg>Return message</ng-template>
+
+<!--switch-->
+<div [ngSwitch]="switchValue">
+  <div *ngSwitchCase="23">value passed is : 23</div>
+  <div *ngSwitchCase="273">value passed is : 273</div>
+  <div *ngSwitchCase="2378">value passed is : 2378</div>
+  <div *ngSwitchCase="23890">value passed is : 23890</div>
+  <div *ngSwitchDefault>Default value</div>
+</div>
+
+<!--ngFor-->
+<table class = "table">
+    <tr>
+        <th>UserId</th>
+        <th>UserName</th>
+        <th>Index</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Even</th>
+        <th>Odd</th>
+        
+    </tr>
+
+    <tr *ngFor="let user of users; index as i;first as f;last as l;even as e;odd as o">
+       <td>{{user.id}}</td>
+       <td>{{user.name}}</td>
+       <th>{{i}}</th>
+        <th>{{f}}</th>
+        <th>{{l}}</th>
+        <th>{{e}}</th>
+        <th>{{o}}</th>
+    </tr>
+</table>
+
+<!--Attribute directives-->
+<div [ngClass] = "[classname1, classname2]" >
+    <p><b>This is an attribute directive</b></p>
+</div>
+<div [ngClass] = "{'one':true,'two':false}" >
+    <p>This is an attribute directive</p>
+</div>
+
+<div>{{person.firstName | uppercase}}</div>
+<div>{{person.lastName | lowercase}}</div>
+<div>{{person.DOB | date: 'MMMM dd'}}</div>
+<div>
+    {{person.salary | currency: 'INR'}}
+</div>
+<div>
+    {{person | json}}
+</div>
+
+
+
+
+
+
+
